@@ -1,6 +1,7 @@
 
+import { apiKey } from "./config.js";
+
 const cityElem = document.querySelector('.js-input');
-const apiKey = 'ba377bb3839b80ec734b00d9dcf9da42'
 const searchElem = document.querySelector('.js-search')
 const weather = document.querySelector('.weather')
 
@@ -16,7 +17,7 @@ async function checkWeather() {
     return;
   } else {
     document.querySelector('.error-message').style.display = "none"
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
     const response = await fetch(url)
     const data = await response.json()
     if (response.status === 404) {
